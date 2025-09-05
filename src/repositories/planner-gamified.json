@@ -1,0 +1,234 @@
+[
+  {
+    "_id": "01",
+    "name": "Samuel",
+    "email": "samuel@email.com",
+    "passwordHash": "12345678",
+    "level": 0,
+    "xp": 0,
+    "quests": [
+      {
+        "id": "01",
+        "title": "Estudar Node.js",
+        "description": "Dedicar 1h ao estudo de APIs",
+        "status": "in_progress",
+        "xpReward": 30,
+        "deadline": "2025-09-10T20:00:00Z"
+      }
+    ],
+    "achievements": [
+      {
+        "id": "01",
+        "title": "Primeira Missão",
+        "description": "Concluiu a primeira missão com sucesso!",
+        "unlocked_at": "2025-09-04T19:00:00Z"
+      }
+    ],
+    "createdAt": "2025-09-04T18:00:00Z",
+    "updatedAt": "2025-09-04T19:30:00Z"
+  },
+  {
+    "_id": 2,
+    "name": "Ingrid",
+    "email": "ingrid@email.com",
+    "passwordHash": "987456123",
+    "level": 1,
+    "xp": 0,
+    "quests": [],
+    "achievements": [],
+    "createdAt": "2025-09-04T18:00:00Z",
+    "updatedAt": "2025-09-04T19:30:00Z"
+  },
+  {
+    "_id": 3,
+    "name": "Ingrid",
+    "email": "ingrid@email.com",
+    "passwordHash": "987456123",
+    "level": 1,
+    "xp": 0,
+    "quests": [],
+    "achievements": [],
+    "createdAt": "2025-09-04T18:00:00Z",
+    "updatedAt": "2025-09-04T19:30:00Z"
+  },
+  {
+    "_id": 4,
+    "name": "Ingrid",
+    "email": "ingrid@email.com",
+    "passwordHash": "987456123",
+    "level": 1,
+    "xp": 0,
+    "quests": [],
+    "achievements": [],
+    "createdAt": "2025-09-04T18:00:00Z",
+    "updatedAt": "2025-09-04T19:30:00Z"
+  },
+  {
+    "_id": 5,
+    "name": "Ingrid",
+    "email": "ingrid@email.com",
+    "passwordHash": "987456123",
+    "level": 1,
+    "xp": 0,
+    "quests": [],
+    "achievements": [],
+    "createdAt": "2025-09-04T18:00:00Z",
+    "updatedAt": "2025-09-04T19:30:00Z"
+  },
+  {
+    "_id": 6,
+    "name": "Ingrid",
+    "email": "ingrid@email.com",
+    "passwordHash": "987456123",
+    "level": 1,
+    "xp": 0,
+    "quests": [],
+    "achievements": [],
+    "createdAt": "2025-09-04T18:00:00Z",
+    "updatedAt": "2025-09-04T19:30:00Z"
+  },
+  {
+    "_id": 7,
+    "name": "Ingrid",
+    "email": "ingrid@email.com",
+    "passwordHash": "987456123",
+    "level": 1,
+    "xp": 0,
+    "quests": [],
+    "achievements": [],
+    "createdAt": "2025-09-04T18:00:00Z",
+    "updatedAt": "2025-09-04T19:30:00Z"
+  },
+  {
+    "_id": 8,
+    "name": "Ingrid",
+    "email": "ingrid@email.com",
+    "passwordHash": "987456123",
+    "level": 1,
+    "xp": 0,
+    "quests": [],
+    "achievements": [],
+    "createdAt": "2025-09-04T18:00:00Z",
+    "updatedAt": "2025-09-04T19:30:00Z"
+  },
+  {
+    "_id": 9,
+    "name": "Ingrid",
+    "email": "ingrid@email.com",
+    "passwordHash": "987456123",
+    "level": 1,
+    "xp": 0,
+    "quests": [],
+    "achievements": [],
+    "createdAt": "2025-09-04T18:00:00Z",
+    "updatedAt": "2025-09-04T19:30:00Z"
+  },
+  {
+    "_id": 10,
+    "name": "Ingrid",
+    "email": "ingrid@email.com",
+    "passwordHash": "987456123",
+    "level": 1,
+    "xp": 0,
+    "quests": [],
+    "achievements": [],
+    "createdAt": "2025-09-04T18:00:00Z",
+    "updatedAt": "2025-09-04T19:30:00Z"
+  },
+  {
+    "_id": 11,
+    "name": "Ingrid",
+    "email": "ingrid@email.com",
+    "passwordHash": "987456123",
+    "level": 1,
+    "xp": 0,
+    "quests": [],
+    "achievements": [],
+    "createdAt": "2025-09-04T18:00:00Z",
+    "updatedAt": "2025-09-04T19:30:00Z"
+  },
+  {
+    "_id": 12,
+    "name": "Ingrid",
+    "email": "ingrid@email.com",
+    "passwordHash": "987456123",
+    "level": 1,
+    "xp": 0,
+    "quests": [],
+    "achievements": [],
+    "createdAt": "2025-09-04T18:00:00Z",
+    "updatedAt": "2025-09-04T19:30:00Z"
+  },
+  {
+    "_id": 13,
+    "name": "Ingrid",
+    "email": "ingrid@email.com",
+    "passwordHash": "987456123",
+    "level": 1,
+    "xp": 0,
+    "quests": [],
+    "achievements": [],
+    "createdAt": "2025-09-04T18:00:00Z",
+    "updatedAt": "2025-09-04T19:30:00Z"
+  },
+  {
+    "_id": 14,
+    "name": "Ingrid",
+    "email": "ingrid@email.com",
+    "passwordHash": "987456123",
+    "level": 1,
+    "xp": 0,
+    "quests": [],
+    "achievements": [],
+    "createdAt": "2025-09-04T18:00:00Z",
+    "updatedAt": "2025-09-04T19:30:00Z"
+  },
+  {
+    "_id": 15,
+    "name": "Ingrid",
+    "email": "ingrid@email.com",
+    "passwordHash": "987456123",
+    "level": 1,
+    "xp": 0,
+    "quests": [],
+    "achievements": [],
+    "createdAt": "2025-09-04T18:00:00Z",
+    "updatedAt": "2025-09-04T19:30:00Z"
+  },
+  {
+    "_id": 16,
+    "name": "Ingrid",
+    "email": "ingrid@email.com",
+    "passwordHash": "987456123",
+    "level": 1,
+    "xp": 0,
+    "quests": [],
+    "achievements": [],
+    "createdAt": "2025-09-04T18:00:00Z",
+    "updatedAt": "2025-09-04T19:30:00Z"
+  },
+  {
+    "_id": 17,
+    "name": "Ingrid",
+    "email": "ingrid@email.com",
+    "passwordHash": "987456123",
+    "level": 1,
+    "xp": 0,
+    "quests": [],
+    "achievements": [],
+    "createdAt": "2025-09-04T18:00:00Z",
+    "updatedAt": "2025-09-04T19:30:00Z"
+  },
+  {
+    "_id": 18,
+    "name": "Ingrid",
+    "email": "ingrid@email.com",
+    "passwordHash": "987456123",
+    "level": 1,
+    "xp": 0,
+    "quests": [],
+    "achievements": [],
+    "createdAt": "2025-09-04T18:00:00Z",
+    "updatedAt": "2025-09-04T19:30:00Z"
+  }
+]

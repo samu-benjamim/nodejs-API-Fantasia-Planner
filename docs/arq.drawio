@@ -1,0 +1,64 @@
+<mxfile host="65bd71144e">
+    <diagram id="eb3A_Zs0vDgKGCIJ-vZ0" name="Página-1">
+        <mxGraphModel dx="1310" dy="1113" grid="1" gridSize="10" guides="0" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Client" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="350" width="60" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Routes" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="180" y="280" width="120" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="user-routes" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="190" y="320" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="quest-routes" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="190" y="360" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="achievement" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="190" y="400" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="Controllers" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="354" y="280" width="120" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="user" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="364" y="320" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="quest" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="364" y="360" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="achievement" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="364" y="400" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="Services" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="520" y="280" width="120" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="user" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="530" y="320" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="quest" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="530" y="360" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="achievement" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="530" y="400" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="Models" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;" vertex="1" parent="1">
+                    <mxGeometry x="680" y="280" width="120" height="180" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="Schemas-User" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="690" y="320" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="quest" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="690" y="360" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="achievement" style="shape=ext;double=1;rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="690" y="400" width="100" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="MongoDB" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="850" y="340" width="60" height="40" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

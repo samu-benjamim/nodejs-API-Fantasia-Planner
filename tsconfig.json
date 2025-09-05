@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "target": "es6", // versão do Js
+    "outDir": "./dist", // diretório para salvar os arquivos js
+    "strict": true, // habilita strict type (verifica se as variaiveis estão sendo declaradas)
+    "esModuleInterop": true // habilita a possibilidade flexibilizar o modelo exportação
+  }
+}
