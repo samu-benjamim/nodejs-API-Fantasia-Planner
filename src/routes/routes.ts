@@ -1,7 +1,7 @@
 export enum Route{
     CREATE = "/user",
     LIST = "/user/list",
-    USER = "/user/:id",
+    USER = "/user/",
     QUEST = "/user/:id/quests",
     QUESTID = "/user/:id/quests/:questsId",
     ADDXP = "/users/:id/progress/xp",

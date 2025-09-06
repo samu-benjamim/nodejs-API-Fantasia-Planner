@@ -3,6 +3,7 @@ import { pathUser } from "../../repositories/planner-gamified-repositories"
 import { serviceListUser } from "./list-user";
 import { UserModel } from "../../models/user-model";
 import { FilterModel } from "../../models/filter-model";
+import { serviceSeeUser } from "../../services/services-user/see-user";
 
 const writeUser = (data: any) => {
     fs.writeFileSync(pathUser, JSON.stringify(data, null, 2), "utf-8");
@@ -10,32 +11,20 @@ const writeUser = (data: any) => {
 
 
 
-export const serviceCreatUser = async () => { 
+export const serviceDeteleUser = async (id:any) => { 
     let responseFormat: FilterModel = {
         statusCode: 0,
         body: [],
     }
 
-    const users = await serviceListUser()
+
     
-
+    const users = await serviceListUser()
+    const userId = await serviceSeeUser(id)
     const body = users.body
+    const bodyId = users.body
 
-    const newUser:UserModel  = {
-    "_id": body.length + 1,
-    "name": "Ingrid",
-    "email": "ingrid@email.com",
-    "passwordHash": "987456123",
-    "level": 1,
-    "xp": 0,
-    "quests": [],
-    "achievements": [],
-    "createdAt": "2025-09-04T18:00:00Z",
-    "updatedAt": "2025-09-04T19:30:00Z"
-    }
-
-
-    body.push(newUser);
+    body = body.filter((user: any) => user.id !== id);
 
     writeUser(body)
 

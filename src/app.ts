@@ -1,5 +1,5 @@
 import * as http from "http";
-import { creatUser, listUser } from "./controller/planner-gamified-controller";
+import { creatUser, listUser, seeUser, deleteUser } from "./controller/planner-gamified-controller";
 import { HttpMethod } from "./util/http-methods";
 import { Route } from "./routes/routes";
 
@@ -9,14 +9,16 @@ export const app = async (request: http.IncomingMessage, response: http.ServerRe
 
     const baseUrl = request.url?.split("?")[0];
 
+
     
 
     if (request.method === HttpMethod.GET) {
         if (baseUrl == Route.LIST) {
             await listUser (request, response)
         }
-        if (baseUrl == Route.USER) {
-            null
+        if (baseUrl?.startsWith(Route.USER)) {
+            const id = baseUrl?.split("/")[2]
+            await seeUser (request, response, id)
         }
         if (baseUrl == Route.QUEST) {
             null
@@ -56,8 +58,9 @@ export const app = async (request: http.IncomingMessage, response: http.ServerRe
     }
 
     if (request.method === HttpMethod.DELETE) {
-        if (baseUrl == Route.USER) {
-            null
+        if (baseUrl?.startsWith(Route.USER)) {
+            const id = baseUrl?.split("/")[2]
+            await deleteUser (request, response, id)
         }
         if (baseUrl == Route.QUESTID) {
             null

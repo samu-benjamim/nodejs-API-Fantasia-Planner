@@ -1,4 +1,6 @@
-[
+let id = "1"
+
+let data = [
   {
     "_id": "01",
     "name": "Samuel",
@@ -53,6 +55,66 @@
   },
   {
     "_id": 4,
+    "name": "Ingrid",
+    "email": "ingrid@email.com",
+    "passwordHash": "987456123",
+    "level": 1,
+    "xp": 0,
+    "quests": [],
+    "achievements": [],
+    "createdAt": "2025-09-04T18:00:00Z",
+    "updatedAt": "2025-09-04T19:30:00Z"
+  },
+  {
+    "_id": 5,
+    "name": "Ingrid",
+    "email": "ingrid@email.com",
+    "passwordHash": "987456123",
+    "level": 1,
+    "xp": 0,
+    "quests": [],
+    "achievements": [],
+    "createdAt": "2025-09-04T18:00:00Z",
+    "updatedAt": "2025-09-04T19:30:00Z"
+  },
+  {
+    "_id": 6,
+    "name": "Ingrid",
+    "email": "ingrid@email.com",
+    "passwordHash": "987456123",
+    "level": 1,
+    "xp": 0,
+    "quests": [],
+    "achievements": [],
+    "createdAt": "2025-09-04T18:00:00Z",
+    "updatedAt": "2025-09-04T19:30:00Z"
+  },
+  {
+    "_id": 7,
+    "name": "Ingrid",
+    "email": "ingrid@email.com",
+    "passwordHash": "987456123",
+    "level": 1,
+    "xp": 0,
+    "quests": [],
+    "achievements": [],
+    "createdAt": "2025-09-04T18:00:00Z",
+    "updatedAt": "2025-09-04T19:30:00Z"
+  },
+  {
+    "_id": 8,
+    "name": "Ingrid",
+    "email": "ingrid@email.com",
+    "passwordHash": "987456123",
+    "level": 1,
+    "xp": 0,
+    "quests": [],
+    "achievements": [],
+    "createdAt": "2025-09-04T18:00:00Z",
+    "updatedAt": "2025-09-04T19:30:00Z"
+  },
+  {
+    "_id": 9,
     "name": "Ingrid",
     "email": "ingrid@email.com",
     "passwordHash": "987456123",
@@ -196,3 +258,21 @@
     "updatedAt": "2025-09-04T19:30:00Z"
   }
 ]
+
+function serviceSeeUser (id:any)  { 
+
+
+    const rawId = (parseInt(id)) - 1
+
+    let item = (data[rawId].name)
+
+    
+
+    console.log(rawId)
+    
+    console.log(typeof(rawId))
+    console.log(item)
+}
+
+
+serviceSeeUser(id)
