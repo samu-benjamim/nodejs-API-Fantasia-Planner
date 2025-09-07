@@ -1,12 +1,16 @@
+import { AchievementModel } from "./filter-achievement";
+import { QuestModel } from "./quest-model";
+
+
 export interface UserModel {
-    _id: number;
+    id: any;
     name: string;
     email: string;
     passwordHash: string;
     level: number;
     xp: number;
-    quests: [];
-    achievements: [];
+    quests: QuestModel[];
+    achievements: AchievementModel[];
     createdAt: string;
     updatedAt: string;
 }

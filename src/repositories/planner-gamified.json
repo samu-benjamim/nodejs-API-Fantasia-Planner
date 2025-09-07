@@ -1,6 +1,6 @@
 [
   {
-    "_id": "01",
+    "id": 1,
     "name": "Samuel",
     "email": "samuel@email.com",
     "passwordHash": "12345678",
@@ -14,6 +14,54 @@
         "status": "in_progress",
         "xpReward": 30,
         "deadline": "2025-09-10T20:00:00Z"
+      },
+      {
+        "id": 2,
+        "title": "Elaborar projeto pessoal",
+        "description": "Elaboração de uma API para Planner Gamified",
+        "status": "Em andamento",
+        "xpReward": 100,
+        "deadline": "2025-09-04T19:00:00Z"
+      },
+      {
+        "id": 3,
+        "title": "Elaborar projeto pessoal",
+        "description": "Elaboração de uma API para Planner Gamified",
+        "status": "Em andamento",
+        "xpReward": 100,
+        "deadline": "2025-09-04T19:00:00Z"
+      },
+      {
+        "id": 4,
+        "title": "Elaborar projeto pessoal",
+        "description": "Elaboração de uma API para Planner Gamified",
+        "status": "Em andamento",
+        "xpReward": 100,
+        "deadline": "2025-09-04T19:00:00Z"
+      },
+      {
+        "id": 5,
+        "title": "Elaborar projeto pessoal",
+        "description": "Elaboração de uma API para Planner Gamified",
+        "status": "Em andamento",
+        "xpReward": 100,
+        "deadline": "2025-09-04T19:00:00Z"
+      },
+      {
+        "id": 6,
+        "title": "Elaborar projeto pessoal",
+        "description": "Elaboração de uma API para Planner Gamified",
+        "status": "Em andamento",
+        "xpReward": 100,
+        "deadline": "2025-09-04T19:00:00Z"
+      },
+      {
+        "id": 7,
+        "title": "Elaborar projeto pessoal",
+        "description": "Elaboração de uma API para Planner Gamified",
+        "status": "Em andamento",
+        "xpReward": 100,
+        "deadline": "2025-09-04T19:00:00Z"
       }
     ],
     "achievements": [
@@ -28,7 +76,36 @@
     "updatedAt": "2025-09-04T19:30:00Z"
   },
   {
-    "_id": 2,
+    "id": 2,
+    "name": "Ingrid",
+    "email": "ingrid@email.com",
+    "passwordHash": "987456123",
+    "level": 1,
+    "xp": 0,
+    "quests": [
+      {
+        "id": 1,
+        "title": "Elaborar projeto pessoal",
+        "description": "Elaboração de uma API para Planner Gamified",
+        "status": "Em andamento",
+        "xpReward": 100,
+        "deadline": "2025-09-04T19:00:00Z"
+      },
+      {
+        "id": 2,
+        "title": "Elaborar projeto pessoal",
+        "description": "Elaboração de uma API para Planner Gamified",
+        "status": "Em andamento",
+        "xpReward": 100,
+        "deadline": "2025-09-04T19:00:00Z"
+      }
+    ],
+    "achievements": [],
+    "createdAt": "2025-09-04T18:00:00Z",
+    "updatedAt": "2025-09-04T19:30:00Z"
+  },
+  {
+    "id": 3,
     "name": "Ingrid",
     "email": "ingrid@email.com",
     "passwordHash": "987456123",
@@ -40,7 +117,7 @@
     "updatedAt": "2025-09-04T19:30:00Z"
   },
   {
-    "_id": 3,
+    "id": 4,
     "name": "Ingrid",
     "email": "ingrid@email.com",
     "passwordHash": "987456123",
@@ -52,7 +129,7 @@
     "updatedAt": "2025-09-04T19:30:00Z"
   },
   {
-    "_id": 4,
+    "id": 10,
     "name": "Ingrid",
     "email": "ingrid@email.com",
     "passwordHash": "987456123",
@@ -64,7 +141,7 @@
     "updatedAt": "2025-09-04T19:30:00Z"
   },
   {
-    "_id": 10,
+    "id": 15,
     "name": "Ingrid",
     "email": "ingrid@email.com",
     "passwordHash": "987456123",
@@ -76,7 +153,7 @@
     "updatedAt": "2025-09-04T19:30:00Z"
   },
   {
-    "_id": 11,
+    "id": 16,
     "name": "Ingrid",
     "email": "ingrid@email.com",
     "passwordHash": "987456123",
@@ -88,7 +165,7 @@
     "updatedAt": "2025-09-04T19:30:00Z"
   },
   {
-    "_id": 12,
+    "id": 17,
     "name": "Ingrid",
     "email": "ingrid@email.com",
     "passwordHash": "987456123",
@@ -100,7 +177,7 @@
     "updatedAt": "2025-09-04T19:30:00Z"
   },
   {
-    "_id": 13,
+    "id": 18,
     "name": "Ingrid",
     "email": "ingrid@email.com",
     "passwordHash": "987456123",
@@ -112,7 +189,7 @@
     "updatedAt": "2025-09-04T19:30:00Z"
   },
   {
-    "_id": 14,
+    "id": 19,
     "name": "Ingrid",
     "email": "ingrid@email.com",
     "passwordHash": "987456123",
@@ -124,7 +201,7 @@
     "updatedAt": "2025-09-04T19:30:00Z"
   },
   {
-    "_id": 15,
+    "id": 20,
     "name": "Ingrid",
     "email": "ingrid@email.com",
     "passwordHash": "987456123",
@@ -136,7 +213,7 @@
     "updatedAt": "2025-09-04T19:30:00Z"
   },
   {
-    "_id": 16,
+    "id": 16,
     "name": "Ingrid",
     "email": "ingrid@email.com",
     "passwordHash": "987456123",
@@ -148,7 +225,7 @@
     "updatedAt": "2025-09-04T19:30:00Z"
   },
   {
-    "_id": 17,
+    "id": 17,
     "name": "Ingrid",
     "email": "ingrid@email.com",
     "passwordHash": "987456123",
@@ -160,7 +237,7 @@
     "updatedAt": "2025-09-04T19:30:00Z"
   },
   {
-    "_id": 18,
+    "id": 1,
     "name": "Ingrid",
     "email": "ingrid@email.com",
     "passwordHash": "987456123",
@@ -172,19 +249,7 @@
     "updatedAt": "2025-09-04T19:30:00Z"
   },
   {
-    "_id": 19,
-    "name": "Ingrid",
-    "email": "ingrid@email.com",
-    "passwordHash": "987456123",
-    "level": 1,
-    "xp": 0,
-    "quests": [],
-    "achievements": [],
-    "createdAt": "2025-09-04T18:00:00Z",
-    "updatedAt": "2025-09-04T19:30:00Z"
-  },
-  {
-    "_id": 20,
+    "id": 1,
     "name": "Ingrid",
     "email": "ingrid@email.com",
     "passwordHash": "987456123",

@@ -161,19 +161,19 @@ Quer que eu te monte já o **modelo User.ts (Mongoose)** com `quests` e `achieve
 
 🔹 Usuários
 
-POST /users → Criar novo usuário
+POST /users → Criar novo usuário OK
 
-GET /users/:id → Buscar perfil
+GET /users/:id → Buscar perfil OK
 
-PATCH /users/:id → Atualizar usuário
+PATCH /users/:id → Atualizar usuário OK
 
-DELETE /users/:id → Deletar usuário
+DELETE /users/:id → Deletar usuário OK
 
 🔹 Quests
 
-POST /users/:id/quests → Criar missão
+POST /users/:id/quests → Criar missão OK
 
-GET /users/:id/quests → Listar missões
+GET /users/:id/quests → Listar missões OK
 
 PATCH /users/:id/quests/:questId → Atualizar missão
 
@@ -181,9 +181,9 @@ DELETE /users/:id/quests/:questId → Remover missão
 
 🔹 Achievements
 
-POST /users/:id/achievements → Adicionar conquista
+POST /users/:id/achievements → Adicionar conquista OK
 
-GET /users/:id/achievements → Listar conquistas
+GET /users/:id/achievements → Listar conquistas OK
 
 🔹 Progressão
 

@@ -17,14 +17,12 @@ export const serviceDeteleUser = async (id:any) => {
         body: [],
     }
 
-
+    const rawId = id -1
     
     const users = await serviceListUser()
-    const userId = await serviceSeeUser(id)
     const body = users.body
-    const bodyId = users.body
 
-    body = body.filter((user: any) => user.id !== id);
+   body.splice(rawId, 1)
 
     writeUser(body)
 

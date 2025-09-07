@@ -20,9 +20,10 @@ export const serviceCreatUser = async () => {
     
 
     const body = users.body
+    const num :number = body.length + 1
 
     const newUser:UserModel  = {
-    "_id": body.length + 1,
+    "id": 1,
     "name": "Ingrid",
     "email": "ingrid@email.com",
     "passwordHash": "987456123",
