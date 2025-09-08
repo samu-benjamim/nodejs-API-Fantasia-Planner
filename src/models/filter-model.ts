@@ -1,7 +1,4 @@
-import { QuestModel } from "./quest-model";
-import { UserModel } from "./user-model";
-
-export interface FilterModel {
-    statusCode: number;
-    body: UserModel[];
+export interface FilterModel<T> {
+  statusCode: number;
+  body: T[];
 }

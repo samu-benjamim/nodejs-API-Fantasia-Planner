@@ -1,28 +1,33 @@
-import { FilterModel } from "../../models/filter-model"
-import { serviceListUser } from "../services-user/list-user"
+import { QuestModel } from "../../models/quest-model";
+import { ResponseModel } from "../../models/response-model";
+import { serviceListUser } from "../services-user/list-user";
+import { UserModel } from "../../models/user-model";
 
+export const serviceSeeQuests = async (
+  id: string | number
+): Promise<ResponseModel<QuestModel[] | { error: string }>> => {
+  try {
+    const usersResponse = await serviceListUser();
+    const users = usersResponse.body as UserModel[];
 
-export const serviceSeeQuests = async (id:any) => { 
-    let responseFormat: { statusCode: number; body: any } = {
-        statusCode: 0,
-        body: null,
-    }
+    const userId = typeof id === "string" ? parseInt(id) : id;
+    const user = users.find(u => u.id === userId);
 
-    const users = await serviceListUser()
-    
-    
-    const body = users.body   
-
-    const user = body.find((u: any) => u.id === Number(id))
-    
     if (!user) {
-        responseFormat.statusCode = 404
-        responseFormat.body = { error: "Usuário não encontrado" }
-        return responseFormat
+      return {
+        statusCode: 404,
+        body: { error: "Usuário não encontrado" },
+      };
     }
 
-    responseFormat.statusCode = 200
-    responseFormat.body = user.quests
-
-    return responseFormat
-}
+    return {
+      statusCode: 200,
+      body: user.quests,
+    };
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: { error: "Erro ao buscar quests" },
+    };
+  }
+};

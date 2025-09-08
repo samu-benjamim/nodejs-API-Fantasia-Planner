@@ -1,101 +1,80 @@
 import { IncomingMessage, ServerResponse } from "http";
 import { serviceListUser } from "../services/services-user/list-user";
-import { ContentType } from "../util/content-type";
-import { serviceCreatUser } from "../services/services-user/creat-user";
+import { serviceCreateUser } from "../services/services-user/creat-user";
 import { serviceSeeUser } from "../services/services-user/see-user";
-import { serviceDeteleUser } from "../services/services-user/delete-user";
+import { serviceDeleteUser } from "../services/services-user/delete-user";
+import { serviceUpdateUser } from "../services/services-user/update-user";
+import { serviceCreateQuest } from "../services/services-quest/creat-quest";
+import { serviceDeleteQuest } from "../services/services-quest/delete-quest";
 import { serviceSeeQuests } from "../services/services-quest/see-quest";
-import { serviceCreatQuest } from "../services/services-quest/creat-quest";
+import { serviceUpdateQuest } from "../services/services-quest/update-quest";
 import { serviceSeeAchievements } from "../services/services-achievements/see-achievements";
 import { serviceRankingUser } from "../services/service-ranking";
-import { serviceUpadateQuest } from "../services/services-quest/update-quest";
-import { serviceUpadateUser } from "../services/services-user/uptate-user";
-import { serviceDeleteQuest } from "../services/services-quest/delete-quest";
+import { ContentType } from "../util/content-type";
+import { getRequestBody } from "../util/getRequestBody";
 
+// 🔹 função auxiliar para responder
+const sendResponse = (response: ServerResponse, content: { statusCode: number, body: any }) => {
+  response.writeHead(content.statusCode, { "Content-Type": ContentType.JSON });
+  response.end(JSON.stringify(content.body));
+};
 
+// 🔹 Controllers
+export const UserController = {
+  list: async (_req: IncomingMessage, res: ServerResponse) => {
+    sendResponse(res, await serviceListUser());
+  },
+  create: async (_req: IncomingMessage, res: ServerResponse) => {
+    const data = await getRequestBody(_req);
+    sendResponse(res, await serviceCreateUser(data));
+  },
+  see: async (_req: IncomingMessage, res: ServerResponse, params: string[]) => {
+    const id = parseInt(params[0]);
+    sendResponse(res, await serviceSeeUser(id));
+  },
+  delete: async (_req: IncomingMessage, res: ServerResponse, params: string[]) => {
+    const id = parseInt(params[0]);
+    sendResponse(res, await serviceDeleteUser(id));
+  },
+  update: async (_req: IncomingMessage, res: ServerResponse, params: string[]) => {
+    const userId = parseInt(params[0]);
+    const data = await getRequestBody(_req);
+    sendResponse(res, await serviceUpdateUser(userId, data));
+  }
+};
 
-export const listUser = async (request:IncomingMessage, response:ServerResponse) => {
-    const content = await serviceListUser();
+export const QuestController = {
+  list: async (_req: IncomingMessage, res: ServerResponse, params: string[]) => {
+    const userId = parseInt(params[0]);
+    sendResponse(res, await serviceSeeQuests(userId));
+  },
+  create: async (_req: IncomingMessage, res: ServerResponse, params: string[]) => {
+    const userId = parseInt(params[0]);
+    const data = await getRequestBody(_req);
+    sendResponse(res, await serviceCreateQuest(userId, data));
+  },
+  update: async (_req: IncomingMessage, res: ServerResponse, params: string[]) => {
+    const userId = parseInt(params[0]);
+    const questId = parseInt(params[1]);
+    const data = await getRequestBody(_req);
+    sendResponse(res, await serviceUpdateQuest(userId, questId, data));
+  },
+  delete: async (_req: IncomingMessage, res: ServerResponse, params: string[]) => {
+    const userId = parseInt(params[0]);
+    const questId = parseInt(params[1]);
+    sendResponse(res, await serviceDeleteQuest(userId, questId));
+  }
+};
 
-    response.writeHead(content.statusCode, {'Content-Type': ContentType.JSON})
-    response.write(JSON.stringify(content.body))
-    response.end()
-}
+export const AchievementController = {
+  list: async (_req: IncomingMessage, res: ServerResponse, params: string[]) => {
+    const userId = parseInt(params[0]);
+    sendResponse(res, await serviceSeeAchievements(userId));
+  }
+};
 
-export const creatUser = async (request:IncomingMessage, response:ServerResponse) => {
-    const content = await serviceCreatUser();
-
-    response.writeHead(content.statusCode, {'Content-Type': ContentType.JSON})
-    response.write(JSON.stringify(content.body))
-    response.end()
-}
-
-export const seeUser = async (request:IncomingMessage, response:ServerResponse, id: string | undefined) => {
-    const content = await serviceSeeUser(id);
-
-    response.writeHead(content.statusCode, {'Content-Type': ContentType.JSON})
-    response.write(JSON.stringify(content.body))
-    response.end()
-}
-
-export const deleteUser = async (request:IncomingMessage, response:ServerResponse, id: string | undefined) => {
-    const content = await serviceDeteleUser(id);
-
-    response.writeHead(content.statusCode, {'Content-Type': ContentType.JSON})
-    response.write(JSON.stringify(content.body))
-    response.end()
-}
-
-export const seeQuests = async (request:IncomingMessage, response:ServerResponse, id: string | undefined) => {
-    const content = await serviceSeeQuests(id);
-    response.writeHead(content.statusCode, {'Content-Type': ContentType.JSON})
-    response.write(JSON.stringify(content.body))
-    response.end()
-}
-
-export const seeAchievements = async (request:IncomingMessage, response:ServerResponse, id: string | undefined) => {
-    const content = await serviceSeeAchievements(id);
-
-    response.writeHead(content.statusCode, {'Content-Type': ContentType.JSON})
-    response.write(JSON.stringify(content.body))
-    response.end()
-}
-
-export const rankingUser = async (request:IncomingMessage, response:ServerResponse) => {
-    const content = await serviceRankingUser();
-    response.writeHead(content.statusCode, {'Content-Type': ContentType.JSON})
-    response.write(JSON.stringify(content.body))
-    response.end()
-}
-
-export const creatQuest = async (request:IncomingMessage, response:ServerResponse, id: number) => {
-    const content = await serviceCreatQuest(id);
-
-    response.writeHead(content.statusCode, {'Content-Type': ContentType.JSON})
-    response.write(JSON.stringify(content.body))
-    response.end()
-}
-
-export const updateQuest = async (request:IncomingMessage, response:ServerResponse, userId: number, questId: number) => {
-    const content = await serviceUpadateQuest(userId, questId);
-
-    response.writeHead(content.statusCode, {'Content-Type': ContentType.JSON})
-    response.write(JSON.stringify(content.body))
-    response.end()
-}
-
-export const deleteQuest = async (request:IncomingMessage, response:ServerResponse, userId: number, questId: number) => {
-    const content = await serviceDeleteQuest(userId, questId);
-
-    response.writeHead(content.statusCode, {'Content-Type': ContentType.JSON})
-    response.write(JSON.stringify(content.body))
-    response.end()
-}
-
-export const updateUser = async (request:IncomingMessage, response:ServerResponse, userId: number) => {
-    const content = await serviceUpadateUser(userId);
-
-    response.writeHead(content.statusCode, {'Content-Type': ContentType.JSON})
-    response.write(JSON.stringify(content.body))
-    response.end()
-}
+export const RankingController = {
+  list: async (_req: IncomingMessage, res: ServerResponse) => {
+    sendResponse(res, await serviceRankingUser());
+  }
+};

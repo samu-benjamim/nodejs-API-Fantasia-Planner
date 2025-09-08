@@ -1,28 +1,23 @@
-import { FilterModel } from "../../models/filter-model"
-import { serviceListUser } from "../services-user/list-user"
+import { FilterModel } from "../../models/filter-model";
+import { serviceListUser } from "../services-user/list-user";
+import { AchievementModel } from "../../models/achievement-model";
 
+export const serviceSeeAchievements = async (id: string | number): Promise<{ statusCode: number; body: AchievementModel[] | { error: string } }> => {
+  const usersResponse = await serviceListUser();
+  const users = usersResponse.body;
 
-export const serviceSeeAchievements = async (id:any) => { 
-    let responseFormat: { statusCode: number; body: any } = {
-        statusCode: 0,
-        body: null,
-    }
+  const userId = typeof id === "string" ? parseInt(id) : id;
+  const user = users.find(u => u.id === userId);
 
-    const users = await serviceListUser()
-    
-    
-    const body = users.body   
+  if (!user) {
+    return {
+      statusCode: 404,
+      body: { error: "Usuário não encontrado" },
+    };
+  }
 
-    const user = body.find((u: any) => u._id === Number(id))
-    
-    if (!user) {
-        responseFormat.statusCode = 404
-        responseFormat.body = { error: "Usuário não encontrado" }
-        return responseFormat
-    }
-
-    responseFormat.statusCode = 200
-    responseFormat.body = user.achievements
-
-    return responseFormat
-}
+  return {
+    statusCode: 200,
+    body: user.achievements,
+  };
+};

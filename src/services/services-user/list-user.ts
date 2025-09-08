@@ -1,17 +1,12 @@
 import { FilterModel } from "../../models/filter-model";
 import { repositoryUser } from "../../repositories/planner-gamified-repositories";
+import { UserModel } from "../../models/user-model";
 
-export const serviceListUser = async (): Promise<FilterModel> => {
-    let responseFormat: FilterModel = {
-        statusCode: 0,
-        body: [],
-    }
+export const serviceListUser = async (): Promise<FilterModel<UserModel>> => {
+  const data = await repositoryUser();
 
-    const data = await repositoryUser();
-
-    responseFormat.statusCode = 200;
-    responseFormat.body = data
-
-
-    return responseFormat
-}
+  return {
+    statusCode: 200,
+    body: data, // já é UserModel[] com datas convertidas
+  };
+};

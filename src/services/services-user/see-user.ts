@@ -1,25 +1,19 @@
-import { FilterModel } from "../../models/filter-model"
-import { serviceListUser } from "./list-user"
+import { serviceListUser } from "./list-user";
+import { UserModel } from "../../models/user-model";
+import { ResponseModel } from "../../models/response-model";
 
+export const serviceSeeUser = async (id: string | number): Promise<ResponseModel<UserModel | {}>> => {
+  const usersResponse = await serviceListUser();
+  const users = usersResponse.body;
 
-export const serviceSeeUser = async (id:any) => { 
-    let responseFormat = {
-        statusCode: 0,
-        body: {},
-    }
+  // transforma id para number
+  const userId = typeof id === "string" ? parseInt(id) : id;
 
-    const users = await serviceListUser()
-    
-    const body = users.body
+  // busca usuário pelo id real
+  const user = users.find(u => u.id === userId) || {};
 
-    const rawId = parseInt(id) - 1 
-    
-    const bodyId = body[rawId]
-
-
-
-    responseFormat.statusCode = 200;
-    responseFormat.body = bodyId
-
-    return responseFormat
-}
+  return {
+    statusCode: 200,
+    body: user,
+  };
+};

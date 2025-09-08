@@ -1,50 +1,44 @@
-import fs from "fs"
-import { pathUser } from "../../repositories/planner-gamified-repositories"
+import fs from "fs/promises";
 import { serviceListUser } from "./list-user";
 import { UserModel } from "../../models/user-model";
+import { pathUser } from "../../repositories/planner-gamified-repositories";
 import { FilterModel } from "../../models/filter-model";
 
-const writeUser = (data: any) => {
-    fs.writeFileSync(pathUser, JSON.stringify(data, null, 2), "utf-8");
+const writeUser = async (data: UserModel[]) => {
+  await fs.writeFile(pathUser, JSON.stringify(data, null, 2), "utf-8");
+};
+
+interface CreateUserDTO {
+  name: string;
+  email: string;
+  passwordHash: string;
 }
 
+export const serviceCreateUser = async (data: CreateUserDTO): Promise<FilterModel<UserModel>> => {
+  const usersResponse = await serviceListUser();
+  const users = usersResponse.body;
 
+  // calcula ID único
+  const newId = users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1;
 
-export const serviceCreatUser = async () => { 
-    let responseFormat: FilterModel = {
-        statusCode: 0,
-        body: [],
-    }
+  const newUser: UserModel = {
+    id: newId,
+    name: data.name,
+    email: data.email,
+    passwordHash: data.passwordHash,
+    level: 1,
+    xp: 0,
+    quests: [],
+    achievements: [],
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
 
-    const users = await serviceListUser()
-    
+  users.push(newUser);
+  await writeUser(users);
 
-    const body = users.body
-    const num :number = body.length + 1
-
-    const newUser:UserModel  = {
-    "id": num,
-    "name": "Ingrid",
-    "email": "ingrid@email.com",
-    "passwordHash": "987456123",
-    "level": 1,
-    "xp": 0,
-    "quests": [],
-    "achievements": [],
-    "createdAt": "2025-09-04T18:00:00Z",
-    "updatedAt": "2025-09-04T19:30:00Z"
-    }
-
-
-    body.push(newUser);
-
-    writeUser(body)
-
-
-    responseFormat.statusCode = 200;
-    responseFormat.body = body
-
-    return responseFormat
-
-
-}
+  return {
+    statusCode: 201,
+    body: users,
+  };
+};

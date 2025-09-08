@@ -3,6 +3,6 @@ export interface QuestModel {
     title: string;
     description: string;
     status: string;
-    xpReward: number,
-    deadline: string;
+    xpReward: number;
+    deadline: Date; // usa Date em vez de string
 }

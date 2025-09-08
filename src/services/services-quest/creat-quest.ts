@@ -1,55 +1,54 @@
-import fs from "fs"
-import { pathUser } from "../../repositories/planner-gamified-repositories"
+import fs from "fs/promises";
+import { pathUser } from "../../repositories/planner-gamified-repositories";
 import { serviceListUser } from "../services-user/list-user";
-import { FilterModel } from "../../models/filter-model";
+import { UserModel } from "../../models/user-model";
 import { QuestModel } from "../../models/quest-model";
-import { serviceSeeQuests } from "./see-quest";
 
-const writeUser = (data: any) => {
-    fs.writeFileSync(pathUser, JSON.stringify(data, null, 2), "utf-8");
+interface ResponseModel<T> {
+  statusCode: number;
+  body: T;
 }
 
-export const serviceCreatQuest = async (UserId:number) => { 
-    let responseFormat: FilterModel = {
-        statusCode: 0,
-        body: [],
-    }
-
-    const users = await serviceListUser()
-    const userList = users.body
-    const user = userList.find(u => u.id === UserId);
-    if (!user) {
-        responseFormat.statusCode = 404;
-        return responseFormat;
-    }
-
-    const servQuests = await serviceSeeQuests(UserId)
-
-    const quests = servQuests.body
-
-
-    const newQuest:QuestModel  = {
-        "id": quests.length + 1,
-        "title": "Elaborar projeto pessoal",
-        "description": "Elaboração de uma API para Planner Gamified",
-        "status": "Em andamento",
-        "xpReward": 100,
-        "deadline": "2025-09-04T19:00:00Z",
-    }
-    
-    const body = users.body
-    
-    quests.push(newQuest);
-
-    user.quests= quests
-
-    writeUser(userList)
-
-
-    responseFormat.statusCode = 200;
-    responseFormat.body = userList
-    
-    return responseFormat
-
-
+interface CreateQuestDTO {
+  title: string;
+  description: string;
+  status?: string;
+  xpReward: number;
+  deadline: Date;
 }
+
+const writeUser = async (data: UserModel[]) => {
+  await fs.writeFile(pathUser, JSON.stringify(data, null, 2), "utf-8");
+};
+
+export const serviceCreateQuest = async (
+  userId: number,
+  questData: CreateQuestDTO
+): Promise<ResponseModel<UserModel[]>> => {
+  const usersResponse = await serviceListUser();
+  const users = usersResponse.body;
+
+  const user = users.find(u => u.id === userId);
+  if (!user) {
+    return { statusCode: 404, body: users };
+  }
+
+  // calcula ID único
+  const nextId = user.quests.length > 0 ? Math.max(...user.quests.map(q => q.id)) + 1 : 1;
+
+const newQuest: QuestModel = {
+  id: nextId,
+  title: "Elaborar ATA",
+  description: "Elaborar ATA da reunião",
+  status: questData.status || "Em andamento",
+  xpReward: 50,
+  deadline: new Date(questData.deadline),
+};
+  user.quests.push(newQuest);
+  await writeUser(users);
+
+  return {
+    statusCode: 201,
+    body: users,
+  };
+};

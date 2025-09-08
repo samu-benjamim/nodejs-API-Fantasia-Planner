@@ -1,36 +1,25 @@
-import fs from "fs"
-import { pathUser } from "../../repositories/planner-gamified-repositories"
+import fs from "fs/promises";
+import { pathUser } from "../../repositories/planner-gamified-repositories";
 import { serviceListUser } from "./list-user";
-import { UserModel } from "../../models/user-model";
 import { FilterModel } from "../../models/filter-model";
-import { serviceSeeUser } from "../../services/services-user/see-user";
+import { UserModel } from "../../models/user-model";
 
-const writeUser = (data: any) => {
-    fs.writeFileSync(pathUser, JSON.stringify(data, null, 2), "utf-8");
-}
+const writeUser = async (data: UserModel[]) => {
+  await fs.writeFile(pathUser, JSON.stringify(data, null, 2), "utf-8");
+};
 
+export const serviceDeleteUser = async (id: string | number): Promise<FilterModel<UserModel>> => {
+  const userId = typeof id === "string" ? parseInt(id) : id;
+  const usersResponse = await serviceListUser();
+  let users = usersResponse.body;
 
+  // filtra todos os usuários, exceto o que será deletado
+  const filteredUsers = users.filter(u => u.id !== userId);
 
-export const serviceDeteleUser = async (id:any) => { 
-    let responseFormat: FilterModel = {
-        statusCode: 0,
-        body: [],
-    }
+  await writeUser(filteredUsers);
 
-    const rawId = id -1
-    
-    const users = await serviceListUser()
-    const body = users.body
-
-   body.splice(rawId, 1)
-
-    writeUser(body)
-
-
-    responseFormat.statusCode = 200;
-    responseFormat.body = body
-
-    return responseFormat
-
-
-}
+  return {
+    statusCode: 200,
+    body: filteredUsers,
+  };
+};

@@ -1,55 +1,31 @@
-import fs from "fs"
-import { pathUser } from "../../repositories/planner-gamified-repositories"
+import fs from "fs";
+import { pathUser } from "../../repositories/planner-gamified-repositories";
 import { serviceListUser } from "../services-user/list-user";
-import { FilterModel } from "../../models/filter-model";
-import { QuestModel } from "../../models/quest-model";
-import { serviceSeeQuests } from "../services-quest/see-quest";
+import { UserModel } from "../../models/user-model";
 
 const writeUser = (data: any) => {
-    fs.writeFileSync(pathUser, JSON.stringify(data, null, 2), "utf-8");
-}
+  fs.writeFileSync(pathUser, JSON.stringify(data, null, 2), "utf-8");
+};
 
-export const serviceAddAchievements = async (UserId:number) => { 
-    let responseFormat: FilterModel = {
-        statusCode: 0,
-        body: [],
-    }
+export const serviceAddAchievements = async (userId: number) => {
+  const usersResponse = await serviceListUser();
+  const users = usersResponse.body as UserModel[];
+  const user = users.find(u => u.id === userId);
 
-    const users = await serviceListUser()
-    const userList = users.body
-    const user = userList.find(u => u.id === UserId);
-    if (!user) {
-        responseFormat.statusCode = 404;
-        return responseFormat;
-    }
+  if (!user) {
+    return { statusCode: 404, body: { error: "Usuário não encontrado" } };
+  }
 
-    const servQuests = await serviceSeeQuests(UserId)
+  const newAchievement = {
+    id: user.achievements.length + 1,
+    title: "Nova Conquista",
+    description: "Conquista desbloqueada!",
+    unlockedAt: new Date(), // usa Date, conforme seu AchievementModel
+  };
 
-    const quests = servQuests.body
+  user.achievements.push(newAchievement);
 
+  writeUser(users);
 
-    const newQuest:QuestModel  = {
-        "id": quests.length + 1,
-        "title": "Elaborar projeto pessoal",
-        "description": "Elaboração de uma API para Planner Gamified",
-        "status": "Em andamento",
-        "xpReward": 100,
-        "deadline": "2025-09-04T19:00:00Z",
-    }
-    
-    const body = users.body
-    
-    quests.push(newQuest);
-
-    user.quests= quests
-
-    writeUser(userList)
-
-
-    responseFormat.statusCode = 200;
-    responseFormat.body = userList
-    
-    return responseFormat
-
-
-}
+  return { statusCode: 200, body: user };
+};

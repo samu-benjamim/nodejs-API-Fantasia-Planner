@@ -1,57 +1,57 @@
-import fs from "fs";
+import fs from "fs/promises";
 import { pathUser } from "../../repositories/planner-gamified-repositories";
 import { serviceListUser } from "../services-user/list-user";
 import { UserModel } from "../../models/user-model";
 import { QuestModel } from "../../models/quest-model";
+import { ResponseModel } from "../../models/response-model";
 
-const writeUser = (data: any) => {
-    fs.writeFileSync(pathUser, JSON.stringify(data, null, 2), "utf-8");
+const writeUser = async (data: UserModel[]) => {
+  await fs.writeFile(pathUser, JSON.stringify(data, null, 2), "utf-8");
 };
 
-export const serviceUpadateQuest = async (userId: number, questId: number) => {
-    let responseFormat = {
-        statusCode: 0,
-        body: {},
-    };
+export const serviceUpdateQuest = async (
+  userId: number,
+  questId: number,
+  data: Partial<QuestModel>
+): Promise<ResponseModel<{ message: string; user?: UserModel }>> => {
+  try {
+    const usersResponse = await serviceListUser();
+    const users = usersResponse.body as UserModel[];
 
-    try {
-        const users = await serviceListUser();
-        const body = users.body as UserModel[];
-
-        const userIndex = body.findIndex((u: UserModel) => u.id === userId);
-       
-        const user = body[userIndex];
-
-        const questIndex = user.quests.findIndex((q: QuestModel) => q.id == (questId));
-        
-        const quest = user.quests[questIndex];
-
-
-        quest.status = "completed";
-
-        user.achievements.push({
-            id: quest.id,
-            title: quest.title,
-            description: `Concluiu a missão: ${quest.title}`,
-            unlocked_at: new Date().toISOString(),
-        });
-
-        user.quests.splice(questIndex, 1);
-
-        body[userIndex] = user;
-
-        writeUser(body);
-
-        responseFormat.statusCode = 200;
-        responseFormat.body = {
-            message: "Missão concluída com sucesso!",
-            user,
-        };
-
-        return responseFormat;
-    } catch (error) {
-        responseFormat.statusCode = 500;
-        responseFormat.body = { message: "Erro ao atualizar missão" };
-        return responseFormat;
+    const user = users.find(u => u.id === userId);
+    if (!user) {
+      return { statusCode: 404, body: { message: "Usuário não encontrado" } };
     }
+
+    const questIndex = user.quests.findIndex(q => q.id === questId);
+    if (questIndex === -1) {
+      return { statusCode: 404, body: { message: "Missão não encontrada" } };
+    }
+
+    const quest = user.quests[questIndex];
+
+    // Atualiza XP e status da missão
+    user.xp += quest.xpReward;
+    quest.status = "completed";
+
+    // Adiciona achievement
+    user.achievements.push({
+      id: quest.id,
+      title: quest.title,
+      description: `Concluiu a missão: ${quest.title}`,
+      unlockedAt: new Date(),
+    });
+
+    // Remove a quest da lista
+    user.quests.splice(questIndex, 1);
+
+    await writeUser(users);
+
+    return {
+      statusCode: 200,
+      body: { message: "Missão concluída com sucesso!", user },
+    };
+  } catch (error) {
+    return { statusCode: 500, body: { message: "Erro ao atualizar missão" } };
+  }
 };
