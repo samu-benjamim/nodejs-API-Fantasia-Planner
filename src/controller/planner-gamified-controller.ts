@@ -9,6 +9,8 @@ import { serviceCreatQuest } from "../services/services-quest/creat-quest";
 import { serviceSeeAchievements } from "../services/services-achievements/see-achievements";
 import { serviceRankingUser } from "../services/service-ranking";
 import { serviceUpadateQuest } from "../services/services-quest/update-quest";
+import { serviceUpadateUser } from "../services/services-user/uptate-user";
+import { serviceDeleteQuest } from "../services/services-quest/delete-quest";
 
 
 
@@ -74,8 +76,24 @@ export const creatQuest = async (request:IncomingMessage, response:ServerRespons
     response.end()
 }
 
-export const updateQuest = async (request:IncomingMessage, response:ServerResponse, userId: number, questId: string) => {
+export const updateQuest = async (request:IncomingMessage, response:ServerResponse, userId: number, questId: number) => {
     const content = await serviceUpadateQuest(userId, questId);
+
+    response.writeHead(content.statusCode, {'Content-Type': ContentType.JSON})
+    response.write(JSON.stringify(content.body))
+    response.end()
+}
+
+export const deleteQuest = async (request:IncomingMessage, response:ServerResponse, userId: number, questId: number) => {
+    const content = await serviceDeleteQuest(userId, questId);
+
+    response.writeHead(content.statusCode, {'Content-Type': ContentType.JSON})
+    response.write(JSON.stringify(content.body))
+    response.end()
+}
+
+export const updateUser = async (request:IncomingMessage, response:ServerResponse, userId: number) => {
+    const content = await serviceUpadateUser(userId);
 
     response.writeHead(content.statusCode, {'Content-Type': ContentType.JSON})
     response.write(JSON.stringify(content.body))

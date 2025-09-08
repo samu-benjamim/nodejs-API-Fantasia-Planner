@@ -1,5 +1,5 @@
 import * as http from "http";
-import { creatUser, listUser, seeUser, deleteUser, seeQuests, seeAchievements, creatQuest, rankingUser, updateQuest } from "./controller/planner-gamified-controller";
+import { creatUser, listUser, seeUser, deleteUser, seeQuests, seeAchievements, creatQuest, rankingUser, updateQuest, updateUser, deleteQuest } from "./controller/planner-gamified-controller";
 import { HttpMethod } from "./util/http-methods";
 import { Route } from "./routes/routes";
 
@@ -39,24 +39,27 @@ export const app = async (request: http.IncomingMessage, response: http.ServerRe
     }
 
     if (request.method === HttpMethod.PATCH) {
-        if (baseUrl == Route.USER) {
-            null
-        } else if (baseUrl?.startsWith("/user/") && baseUrl.includes("/quests/")) {
+        if (baseUrl?.startsWith("/user/") && baseUrl.includes("/quests/")) {
             const parts = baseUrl.split("/");
             const userId = parseInt(parts[2]);
-            const questId = parts[4];
+            const questId = parseInt(parts[4]);
             await updateQuest(request, response, userId, questId);
-        } else if (baseUrl == Route.ADDXP) {
-            null
+        } else if (baseUrl?.startsWith("/user/")) {
+            const parts = baseUrl.split("/");
+            const userId = parseInt(parts[2]);
+            await updateUser(request, response, userId);
         }
     }
 
     if (request.method === HttpMethod.DELETE) {
-        if (baseUrl?.startsWith(Route.USER)) {
+        if (baseUrl?.startsWith("/user/") && baseUrl.includes("/quests/")) {
+            const parts = baseUrl.split("/");
+            const userId = parseInt(parts[2]);
+            const questId = parseInt(parts[4]);
+            await deleteQuest(request, response, userId, questId);
+        } else if (baseUrl?.startsWith(Route.USER)) {
             const id = baseUrl?.split("/")[2]
             await deleteUser (request, response, id)
-        } else if (baseUrl == Route.QUESTID) {
-            null
         }
     }
 

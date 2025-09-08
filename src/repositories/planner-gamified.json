@@ -4,69 +4,21 @@
     "name": "Samuel",
     "email": "samuel@email.com",
     "passwordHash": "12345678",
-    "level": 0,
-    "xp": 0,
+    "level": 10,
+    "xp": 1000,
     "quests": [
       {
-        "id": "01",
+        "id": 1,
         "title": "Estudar Node.js",
         "description": "Dedicar 1h ao estudo de APIs",
         "status": "in_progress",
         "xpReward": 30,
         "deadline": "2025-09-10T20:00:00Z"
-      },
-      {
-        "id": 2,
-        "title": "Elaborar projeto pessoal",
-        "description": "Elaboração de uma API para Planner Gamified",
-        "status": "Em andamento",
-        "xpReward": 100,
-        "deadline": "2025-09-04T19:00:00Z"
-      },
-      {
-        "id": 3,
-        "title": "Elaborar projeto pessoal",
-        "description": "Elaboração de uma API para Planner Gamified",
-        "status": "Em andamento",
-        "xpReward": 100,
-        "deadline": "2025-09-04T19:00:00Z"
-      },
-      {
-        "id": 4,
-        "title": "Elaborar projeto pessoal",
-        "description": "Elaboração de uma API para Planner Gamified",
-        "status": "Em andamento",
-        "xpReward": 100,
-        "deadline": "2025-09-04T19:00:00Z"
-      },
-      {
-        "id": 5,
-        "title": "Elaborar projeto pessoal",
-        "description": "Elaboração de uma API para Planner Gamified",
-        "status": "Em andamento",
-        "xpReward": 100,
-        "deadline": "2025-09-04T19:00:00Z"
-      },
-      {
-        "id": 6,
-        "title": "Elaborar projeto pessoal",
-        "description": "Elaboração de uma API para Planner Gamified",
-        "status": "Em andamento",
-        "xpReward": 100,
-        "deadline": "2025-09-04T19:00:00Z"
-      },
-      {
-        "id": 7,
-        "title": "Elaborar projeto pessoal",
-        "description": "Elaboração de uma API para Planner Gamified",
-        "status": "Em andamento",
-        "xpReward": 100,
-        "deadline": "2025-09-04T19:00:00Z"
       }
     ],
     "achievements": [
       {
-        "id": "01",
+        "id": 1,
         "title": "Primeira Missão",
         "description": "Concluiu a primeira missão com sucesso!",
         "unlocked_at": "2025-09-04T19:00:00Z"
@@ -79,185 +31,163 @@
     "id": 2,
     "name": "Ingrid",
     "email": "ingrid@email.com",
-    "passwordHash": "987456123",
-    "level": 1,
-    "xp": 0,
+    "passwordHash": "987654321",
+    "level": 8,
+    "xp": 800,
     "quests": [
       {
         "id": 1,
-        "title": "Elaborar projeto pessoal",
-        "description": "Elaboração de uma API para Planner Gamified",
-        "status": "Em andamento",
-        "xpReward": 100,
-        "deadline": "2025-09-04T19:00:00Z"
-      },
-      {
-        "id": 2,
-        "title": "Elaborar projeto pessoal",
-        "description": "Elaboração de uma API para Planner Gamified",
-        "status": "Em andamento",
-        "xpReward": 100,
-        "deadline": "2025-09-04T19:00:00Z"
+        "title": "Aprender TypeScript",
+        "description": "Estudar os fundamentos de TypeScript",
+        "status": "in_progress",
+        "xpReward": 50,
+        "deadline": "2025-09-12T20:00:00Z"
       }
     ],
     "achievements": [],
-    "createdAt": "2025-09-04T18:00:00Z",
-    "updatedAt": "2025-09-04T19:30:00Z"
+    "createdAt": "2025-09-02T15:00:00Z",
+    "updatedAt": "2025-09-04T19:00:00Z"
   },
   {
     "id": 3,
-    "name": "Ingrid",
-    "email": "ingrid@email.com",
-    "passwordHash": "987456123",
-    "level": 1,
-    "xp": 0,
-    "quests": [],
-    "achievements": [],
-    "createdAt": "2025-09-04T18:00:00Z",
+    "name": "Lucas",
+    "email": "lucas@email.com",
+    "passwordHash": "lucas123",
+    "level": 2,
+    "xp": 200,
+    "quests": [
+      {
+        "id": 1,
+        "title": "Revisar Estruturas de Dados",
+        "description": "Dedicar 2h para estudar árvores e grafos",
+        "status": "in_progress",
+        "xpReward": 70,
+        "deadline": "2025-09-11T18:00:00Z"
+      },
+      {
+        "id": 2,
+        "title": "Praticar SQL",
+        "description": "Criar consultas avançadas",
+        "status": "in_progress",
+        "xpReward": 60,
+        "deadline": "2025-09-13T16:00:00Z"
+      }
+    ],
+    "achievements": [
+      {
+        "id": 2,
+        "title": "Primeiro Nível",
+        "description": "Alcançou o nível 1 com sucesso!",
+        "unlocked_at": "2025-08-25T14:00:00Z"
+      }
+    ],
+    "createdAt": "2025-08-15T10:00:00Z",
     "updatedAt": "2025-09-04T19:30:00Z"
   },
   {
-    "id": 4,
-    "name": "Ingrid",
-    "email": "ingrid@email.com",
-    "passwordHash": "987456123",
-    "level": 1,
-    "xp": 0,
-    "quests": [],
-    "achievements": [],
-    "createdAt": "2025-09-04T18:00:00Z",
+    "id": 5,
+    "name": "Pedro",
+    "email": "pedro@email.com",
+    "passwordHash": "pedro456",
+    "level": 3,
+    "xp": 350,
+    "quests": [
+      {
+        "id": 1,
+        "title": "Estudar Docker",
+        "description": "Aprender sobre containers e imagens",
+        "status": "in_progress",
+        "xpReward": 80,
+        "deadline": "2025-09-14T21:00:00Z"
+      }
+    ],
+    "achievements": [
+      {
+        "id": 3,
+        "title": "Especialista em APIs",
+        "description": "Finalizou com sucesso o curso de APIs REST",
+        "unlocked_at": "2025-08-29T17:00:00Z"
+      }
+    ],
+    "createdAt": "2025-08-20T09:00:00Z",
     "updatedAt": "2025-09-04T19:30:00Z"
   },
   {
-    "id": 10,
-    "name": "Ingrid",
-    "email": "ingrid@email.com",
-    "passwordHash": "987456123",
-    "level": 1,
-    "xp": 0,
-    "quests": [],
+    "id": 6,
+    "name": "Beatriz",
+    "email": "beatriz@email.com",
+    "passwordHash": "bia789",
+    "level": 0,
+    "xp": 10,
+    "quests": [
+      {
+        "id": 1,
+        "title": "Praticar HTML e CSS",
+        "description": "Criar uma landing page simples",
+        "status": "in_progress",
+        "xpReward": 20,
+        "deadline": "2025-09-08T15:00:00Z"
+      }
+    ],
     "achievements": [],
-    "createdAt": "2025-09-04T18:00:00Z",
+    "createdAt": "2025-08-30T18:00:00Z",
     "updatedAt": "2025-09-04T19:30:00Z"
   },
   {
-    "id": 15,
-    "name": "Ingrid",
-    "email": "ingrid@email.com",
-    "passwordHash": "987456123",
-    "level": 1,
-    "xp": 0,
-    "quests": [],
+    "id": 7,
+    "name": "Carla",
+    "email": "carla@email.com",
+    "passwordHash": "carla321",
+    "level": 2,
+    "xp": 180,
+    "quests": [
+      {
+        "id": 1,
+        "title": "Criar API REST",
+        "description": "Desenvolver uma API básica com TypeScript",
+        "status": "in_progress",
+        "xpReward": 60,
+        "deadline": "2025-09-12T12:00:00Z"
+      },
+      {
+        "id": 2,
+        "title": "Aprender Testes Unitários",
+        "description": "Implementar Jest para validar a API",
+        "status": "in_progress",
+        "xpReward": 70,
+        "deadline": "2025-09-18T20:00:00Z"
+      }
+    ],
     "achievements": [],
-    "createdAt": "2025-09-04T18:00:00Z",
+    "createdAt": "2025-08-28T08:00:00Z",
     "updatedAt": "2025-09-04T19:30:00Z"
   },
   {
-    "id": 16,
-    "name": "Ingrid",
-    "email": "ingrid@email.com",
-    "passwordHash": "987456123",
-    "level": 1,
-    "xp": 0,
-    "quests": [],
-    "achievements": [],
-    "createdAt": "2025-09-04T18:00:00Z",
-    "updatedAt": "2025-09-04T19:30:00Z"
-  },
-  {
-    "id": 17,
-    "name": "Ingrid",
-    "email": "ingrid@email.com",
-    "passwordHash": "987456123",
-    "level": 1,
-    "xp": 0,
-    "quests": [],
-    "achievements": [],
-    "createdAt": "2025-09-04T18:00:00Z",
-    "updatedAt": "2025-09-04T19:30:00Z"
-  },
-  {
-    "id": 18,
-    "name": "Ingrid",
-    "email": "ingrid@email.com",
-    "passwordHash": "987456123",
-    "level": 1,
-    "xp": 0,
-    "quests": [],
-    "achievements": [],
-    "createdAt": "2025-09-04T18:00:00Z",
-    "updatedAt": "2025-09-04T19:30:00Z"
-  },
-  {
-    "id": 19,
-    "name": "Ingrid",
-    "email": "ingrid@email.com",
-    "passwordHash": "987456123",
-    "level": 1,
-    "xp": 0,
-    "quests": [],
-    "achievements": [],
-    "createdAt": "2025-09-04T18:00:00Z",
-    "updatedAt": "2025-09-04T19:30:00Z"
-  },
-  {
-    "id": 20,
-    "name": "Ingrid",
-    "email": "ingrid@email.com",
-    "passwordHash": "987456123",
-    "level": 1,
-    "xp": 0,
-    "quests": [],
-    "achievements": [],
-    "createdAt": "2025-09-04T18:00:00Z",
-    "updatedAt": "2025-09-04T19:30:00Z"
-  },
-  {
-    "id": 16,
-    "name": "Ingrid",
-    "email": "ingrid@email.com",
-    "passwordHash": "987456123",
-    "level": 1,
-    "xp": 0,
-    "quests": [],
-    "achievements": [],
-    "createdAt": "2025-09-04T18:00:00Z",
-    "updatedAt": "2025-09-04T19:30:00Z"
-  },
-  {
-    "id": 17,
-    "name": "Ingrid",
-    "email": "ingrid@email.com",
-    "passwordHash": "987456123",
-    "level": 1,
-    "xp": 0,
-    "quests": [],
-    "achievements": [],
-    "createdAt": "2025-09-04T18:00:00Z",
-    "updatedAt": "2025-09-04T19:30:00Z"
-  },
-  {
-    "id": 1,
-    "name": "Ingrid",
-    "email": "ingrid@email.com",
-    "passwordHash": "987456123",
-    "level": 1,
-    "xp": 0,
-    "quests": [],
-    "achievements": [],
-    "createdAt": "2025-09-04T18:00:00Z",
-    "updatedAt": "2025-09-04T19:30:00Z"
-  },
-  {
-    "id": 1,
-    "name": "Ingrid",
-    "email": "ingrid@email.com",
-    "passwordHash": "987456123",
-    "level": 1,
-    "xp": 0,
-    "quests": [],
-    "achievements": [],
-    "createdAt": "2025-09-04T18:00:00Z",
+    "id": 8,
+    "name": "João",
+    "email": "joao@email.com",
+    "passwordHash": "joao654",
+    "level": 4,
+    "xp": 500,
+    "quests": [
+      {
+        "id": 1,
+        "title": "Estudar Microservices",
+        "description": "Aprender arquitetura de microsserviços",
+        "status": "in_progress",
+        "xpReward": 120,
+        "deadline": "2025-09-20T18:00:00Z"
+      }
+    ],
+    "achievements": [
+      {
+        "id": 4,
+        "title": "Dominador da Nuvem",
+        "description": "Aprendeu a configurar serviços na AWS",
+        "unlocked_at": "2025-09-01T15:00:00Z"
+      }
+    ],
+    "createdAt": "2025-08-10T11:00:00Z",
     "updatedAt": "2025-09-04T19:30:00Z"
   }
 ]

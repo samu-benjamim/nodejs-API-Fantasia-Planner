@@ -2,13 +2,12 @@ import fs from "fs";
 import { pathUser } from "../../repositories/planner-gamified-repositories";
 import { serviceListUser } from "../services-user/list-user";
 import { UserModel } from "../../models/user-model";
-import { QuestModel } from "../../models/quest-model";
 
 const writeUser = (data: any) => {
     fs.writeFileSync(pathUser, JSON.stringify(data, null, 2), "utf-8");
 };
 
-export const serviceUpadateQuest = async (userId: number, questId: number) => {
+export const serviceUpadateUser = async (userId: number) => {
     let responseFormat = {
         statusCode: 0,
         body: {},
@@ -20,23 +19,24 @@ export const serviceUpadateQuest = async (userId: number, questId: number) => {
 
         const userIndex = body.findIndex((u: UserModel) => u.id === userId);
        
-        const user = body[userIndex];
+        let user = body[userIndex];
 
-        const questIndex = user.quests.findIndex((q: QuestModel) => q.id == (questId));
+        const update = {
+            "id": 2,
+            "name": "Ingrid Oliveira",
+            "email": "ingrid@email.com",
+            "passwordHash": "888555",
+            "level": 3,
+            "xp": 0,
+            "quests": [],
+            "achievements": [],
+            "createdAt": "2025-09-04T18:00:00Z",
+            "updatedAt": "2025-09-04T19:30:00Z"
+        }
+            
         
-        const quest = user.quests[questIndex];
 
-
-        quest.status = "completed";
-
-        user.achievements.push({
-            id: quest.id,
-            title: quest.title,
-            description: `Concluiu a missão: ${quest.title}`,
-            unlocked_at: new Date().toISOString(),
-        });
-
-        user.quests.splice(questIndex, 1);
+        user = update;
 
         body[userIndex] = user;
 
@@ -44,7 +44,7 @@ export const serviceUpadateQuest = async (userId: number, questId: number) => {
 
         responseFormat.statusCode = 200;
         responseFormat.body = {
-            message: "Missão concluída com sucesso!",
+            message: "Você atualizou os dados",
             user,
         };
 

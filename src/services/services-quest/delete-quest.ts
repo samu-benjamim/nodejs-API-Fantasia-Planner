@@ -8,7 +8,7 @@ const writeUser = (data: any) => {
     fs.writeFileSync(pathUser, JSON.stringify(data, null, 2), "utf-8");
 };
 
-export const serviceUpadateQuest = async (userId: number, questId: number) => {
+export const serviceDeleteQuest = async (userId: number, questId: number) => {
     let responseFormat = {
         statusCode: 0,
         body: {},
@@ -24,18 +24,6 @@ export const serviceUpadateQuest = async (userId: number, questId: number) => {
 
         const questIndex = user.quests.findIndex((q: QuestModel) => q.id == (questId));
         
-        const quest = user.quests[questIndex];
-
-
-        quest.status = "completed";
-
-        user.achievements.push({
-            id: quest.id,
-            title: quest.title,
-            description: `Concluiu a missão: ${quest.title}`,
-            unlocked_at: new Date().toISOString(),
-        });
-
         user.quests.splice(questIndex, 1);
 
         body[userIndex] = user;
