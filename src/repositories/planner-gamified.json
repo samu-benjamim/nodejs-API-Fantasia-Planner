@@ -1,0 +1,24 @@
+[
+  {
+    "id": 1,
+    "name": "Samukael",
+    "email": "samuel@mail.com",
+    "passwordHash": "iloveingrid",
+    "level": 0,
+    "xp": 0,
+    "quests": [
+      {
+        "id": 1,
+        "title": "confirmação",
+        "description": "confirmação no e-mail",
+        "status": "Em andamento",
+        "xpReward": 10,
+        "deadline": "19/09/2025"
+      }
+    ],
+    "achievements": [],
+    "createdAt": "14/09/2025, 22:02:56",
+    "updatedAt": "14/09/2025, 22:02:56"
+  }
+]
+ 

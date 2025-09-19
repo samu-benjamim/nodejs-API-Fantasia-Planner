@@ -1,0 +1,46 @@
+{
+  "name": "nodejs-api-fantasia-planner",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "prebuild": "npm install",
+    "dist": "tsup src",
+    "start:dist": "npm run dist && --env-file=.env node dist/server.js",
+    "start:dev": "tsx --env-file=.env src/server.ts",
+    "start:devt": "tsx --env-file=.env src/teste.ts",
+    "start:dev:watch": "tsx watch --env-file=.env src/server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samu-benjamim/nodejs-API-Fantasia-Planner.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samu-benjamim/nodejs-API-Fantasia-Planner/issues"
+  },
+  "homepage": "https://github.com/samu-benjamim/nodejs-API-Fantasia-Planner#readme",
+  "description": "",
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.3.1",
+    "tsup": "^8.5.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/cors": "^2.8.19",
+    "@types/dotenv": "^6.1.1",
+    "@types/mongoose": "^5.11.96",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "mongoose": "^8.18.1"
+  }
+}
