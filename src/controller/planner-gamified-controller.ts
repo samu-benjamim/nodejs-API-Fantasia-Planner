@@ -5,10 +5,10 @@ import { serviceCreateUser } from "../services/services-user/creat-user";
 import { serviceSeeUser } from "../services/services-user/see-user";
 import { serviceDeleteUser } from "../services/services-user/delete-user";
 import { serviceUpdateUser } from "../services/services-user/update-user";
-import { serviceCreateQuest } from "../services/services-quest/creat-quest";
+import { serviceCreateQuest } from "../services/services-quest/create-quest";
 import { serviceDeleteQuest } from "../services/services-quest/delete-quest";
 import { serviceSeeQuests } from "../services/services-quest/see-quest";
-import { serviceUpdateQuest } from "../services/services-quest/update-quest";
+import { serviceCompletedQuest } from "../services/services-quest/Completed-quest";
 import { serviceSeeAchievements } from "../services/services-achievements/see-achievements";
 import { serviceRankingUser } from "../services/service-ranking";
 import singnup from "../util/crypt-password";
@@ -57,8 +57,7 @@ export const QuestController = {
   update: async (_req: Request, res: Response) => {
     const id = parseInt(_req.params.id);
     const questId = parseInt(_req.params.id2);
-    const bodyValue = _req.body;
-    sendResponse(res, await serviceUpdateQuest(id, questId, bodyValue));
+    sendResponse(res, await serviceCompletedQuest(id, questId));
   },
   delete: async (_req: Request, res: Response) => {
     const id = parseInt(_req.params.id);
