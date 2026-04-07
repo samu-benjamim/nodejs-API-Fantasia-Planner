@@ -1,43 +1,70 @@
-# 🎮 Node.js API - Fantasia Planner
+![Node.js](https://img.shields.io/badge/Node.js-18+-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Express](https://img.shields.io/badge/Express-v5-000000?style=for-the-badge&logo=express&logoColor=white)
+![License](https://img.shields.io/badge/license-MIT-lightgrey?style=for-the-badge)
+![Status](https://img.shields.io/badge/status-concluído-brightgreen?style=for-the-badge)
 
-API RESTful desenvolvida em **Node.js + TypeScript**, projetada para gerenciar **usuários, missões (quests), conquistas (achievements)** e ranking gamificado.
-Ideal para sistemas de planejamento pessoal com mecânicas de **gamificação**.
+# 🎮 Fantasia Planner API
+
+API RESTful desenvolvida em **Node.js + TypeScript** para gerenciar **usuários, missões (quests) e conquistas (achievements)** com mecânicas de **gamificação** e **ranking global de XP**.
+
+> Desenvolvida para praticar arquitetura em camadas (Controller → Service → Repository), regras de negócio encapsuladas em serviços e validação de endpoints REST com Postman.
 
 ---
 
-## 📌 Sumário
+## 📋 Índice
 
-- [Visão Geral](#-visão-geral)
-- [Tecnologias Utilizadas](#-tecnologias-utilizadas)
+- [Sobre o Projeto](#-sobre-o-projeto)
+- [Tecnologias](#-tecnologias-utilizadas)
+- [Arquitetura](#-arquitetura-em-camadas)
 - [Estrutura do Projeto](#-estrutura-do-projeto)
-- [Instalação e Execução](#-instalação-e-execução)
+- [Instalação](#-instalação-e-execução)
+- [Variáveis de Ambiente](#-variáveis-de-ambiente)
 - [Endpoints](#-endpoints)
-- [Exemplo de Fluxo](#-exemplo-de-fluxo)
-- [Testes](#-testes)
-- [Contribuição](#-contribuição)
+- [Fluxo de Gamificação](#-fluxo-de-gamificação)
+- [O que foi praticado](#-o-que-foi-praticado)
+- [Licença](#-licença)
 
 ---
 
-## 🧩 Visão Geral
+## 💡 Sobre o Projeto
 
-O **Fantasia Planner API** tem como objetivo transformar o gerenciamento de tarefas em uma **experiência gamificada**, permitindo que usuários:
+O **Fantasia Planner** transforma o gerenciamento de tarefas em uma **experiência gamificada**. Cada missão concluída concede XP ao usuário, que pode desbloquear conquistas e subir no ranking global.
 
-- ✅ Criem e gerenciem **usuários**
-- ✅ Adicionem, atualizem e removam **missões (quests)**
-- ✅ Conquistem **achievements** ao concluir tarefas
-- ✅ Competem em um **ranking global de XP**
+**Funcionalidades:**
+- 👤 Criação e gerenciamento de usuários
+- 🗡️ Missões com título, descrição, recompensa em XP e prazo
+- 🏆 Conquistas desbloqueadas automaticamente ao concluir quests
+- 📊 Ranking global de usuários ordenado por XP
 
-Os dados são armazenados em **JSON local** (filesystem), simulando um banco de dados.
+Os dados são persistidos em **arquivos JSON** via `fs/promises`, simulando um repositório de dados sem necessidade de banco externo.
 
 ---
 
 ## 🛠️ Tecnologias Utilizadas
 
-- **Node.js** + **TypeScript**
-- **Express.js** (v5)
-- **CORS** para segurança e integração
-- **File System (fs/promises)** para persistência
-- **Postman** para testes de endpoints
+| Tecnologia | Finalidade |
+|---|---|
+| Node.js 18+ | Runtime JavaScript |
+| TypeScript 5 | Tipagem estática e segurança em tempo de desenvolvimento |
+| Express v5 | Framework HTTP |
+| fs/promises | Persistência de dados em JSON local |
+| CORS | Segurança e integração com front-end |
+| Postman | Testes manuais de endpoints |
+
+---
+
+## 🏗️ Arquitetura em Camadas
+
+```
+Request → Controller → Service → Repository → JSON (filesystem)
+```
+
+| Camada | Responsabilidade |
+|---|---|
+| **Controller** | Recebe a requisição HTTP e retorna a resposta |
+| **Service** | Contém as regras de negócio (XP, achievements, validações) |
+| **Repository** | Lê e escreve os dados no arquivo JSON |
 
 ---
 
@@ -45,18 +72,18 @@ Os dados são armazenados em **JSON local** (filesystem), simulando um banco de 
 
 ```bash
 src/
- ├── controller/              # Controladores HTTP
- ├── models/                  # Modelos de dados (User, Quest, Achievement)
- ├── repositories/            # Acesso ao "banco" JSON
- ├── routes/                  # Definição das rotas
- ├── services/                # Regras de negócio
- │   ├── services-user/       # Operações relacionadas a usuários
- │   ├── services-quest/      # Operações relacionadas a quests
- │   ├── services-achievements# Operações relacionadas a conquistas
- │   └── service-ranking.ts   # Ranking global
- ├── util/                    # Funções utilitárias (datas, corpo de req, etc.)
- ├── server.ts                # Inicialização do servidor
- └── app.ts                   # Configuração do Express
+ ├── controller/               # Controladores HTTP
+ ├── models/                   # Modelos de dados (User, Quest, Achievement)
+ ├── repositories/             # Acesso ao "banco" JSON
+ ├── routes/                   # Definição das rotas
+ ├── services/                 # Regras de negócio
+ │   ├── services-user/        # Operações relacionadas a usuários
+ │   ├── services-quest/       # Operações relacionadas a quests
+ │   ├── services-achievements/# Lógica de desbloqueio de conquistas
+ │   └── service-ranking.ts    # Ranking global por XP
+ ├── util/                     # Funções utilitárias (datas, parsing, etc.)
+ ├── server.ts                 # Inicialização do servidor
+ └── app.ts                    # Configuração do Express
 ```
 
 ---
@@ -65,7 +92,7 @@ src/
 
 ### Pré-requisitos
 
-- Node.js (>= 18)
+- Node.js >= 18
 - npm ou yarn
 
 ### Passo a passo
@@ -73,23 +100,28 @@ src/
 ```bash
 # Clone o repositório
 git clone https://github.com/samu-benjamim/nodejs-API-Fantasia-Planner.git
-
-# Acesse a pasta
 cd nodejs-API-Fantasia-Planner
 
 # Instale as dependências
 npm install
 
-# Ambiente de desenvolvimento
+# Configure as variáveis de ambiente
+cp .env.example .env
+
+# Inicie em modo desenvolvimento
 npm run start:dev
 
-# Ambiente de build e produção
+# Build e produção
 npm run start:dist
 ```
 
-Por padrão, a API roda na porta definida no `.env`:
+---
 
-```
+## 🔐 Variáveis de Ambiente
+
+Crie um arquivo `.env` na raiz do projeto com o seguinte conteúdo:
+
+```env
 PORT=3333
 ```
 
@@ -97,41 +129,33 @@ PORT=3333
 
 ## 🔗 Endpoints
 
+Base URL: `http://localhost:3333`
+
 ### 👤 Usuários
 
-- **GET /game-system/users** → Listar todos os usuários
-- **GET /game-system/users/\:id** → Ver detalhes de um usuário
-- **POST /game-system/users** → Criar novo usuário
-- **PATCH /game-system/users/\:id** → Atualizar usuário
-- **DELETE /game-system/users/\:id** → Deletar usuário
+| Método | Rota | Descrição |
+|---|---|---|
+| `GET` | `/game-system/users` | Listar todos os usuários |
+| `GET` | `/game-system/users/:id` | Buscar usuário por ID |
+| `POST` | `/game-system/users` | Criar novo usuário |
+| `PATCH` | `/game-system/users/:id` | Atualizar usuário |
+| `DELETE` | `/game-system/users/:id` | Deletar usuário |
 
-### 🗡️ Quests
-
-- **GET /game-system/users/\:id/quests** → Listar quests de um usuário
-- **POST /game-system/users/\:id/quests** → Criar nova quest
-- **PATCH /game-system/users/\:id/quests/\:id2** → Atualizar quest
-- **DELETE /game-system/users/\:id/quests/\:id2** → Remover quest
-
-### 🏆 Conquistas
-
-- **GET /game-system/users/\:id/achievents** → Listar conquistas de um usuário
-
-### 📊 Ranking
-
-- **GET /game-system/ranking** → Ranking de usuários por XP
-
----
-
-## 🔄 Exemplo de Fluxo
-
-1. **Criar usuário**
-
+**POST `/game-system/users` — Body:**
 ```json
-POST /game-system/users
 {
   "name": "Alex",
   "email": "alex@email.com",
-  "passwordHash": "123456",
+  "passwordHash": "123456"
+}
+```
+
+**Resposta `201 Created`:**
+```json
+{
+  "id": "uuid-gerado",
+  "name": "Alex",
+  "email": "alex@email.com",
   "level": 1,
   "xp": 0,
   "quests": [],
@@ -139,10 +163,19 @@ POST /game-system/users
 }
 ```
 
-2. **Adicionar Quest**
+---
 
+### 🗡️ Quests
+
+| Método | Rota | Descrição |
+|---|---|---|
+| `GET` | `/game-system/users/:id/quests` | Listar quests do usuário |
+| `POST` | `/game-system/users/:id/quests` | Criar nova quest |
+| `PATCH` | `/game-system/users/:id/quests/:questId` | Atualizar quest |
+| `DELETE` | `/game-system/users/:id/quests/:questId` | Remover quest |
+
+**POST — Body:**
 ```json
-POST /game-system/users/1/quests
 {
   "title": "Estudar Node.js",
   "description": "Dedicar 1h de estudo em Node.js",
@@ -152,25 +185,99 @@ POST /game-system/users/1/quests
 }
 ```
 
-3. **Concluir Quest**
-
+**Concluir Quest — PATCH Body:**
 ```json
-PATCH /game-system/users/1/quests/1
 {
   "status": "Concluido"
 }
 ```
 
-➡️ Usuário ganha **XP** e desbloqueia um **Achievement**.
+**Resposta `200 OK`** *(usuário recebe XP e pode desbloquear achievement):*
+```json
+{
+  "message": "Quest concluída! +50 XP",
+  "user": {
+    "id": "uuid",
+    "xp": 50,
+    "achievements": ["Primeira Quest Concluída"]
+  }
+}
+```
 
 ---
 
-## 🧪 Testes
+### 🏆 Conquistas
 
-Todos os endpoints foram **validados com Postman** ✅.
+| Método | Rota | Descrição |
+|---|---|---|
+| `GET` | `/game-system/users/:id/achievements` | Listar conquistas do usuário |
+
+**Resposta `200 OK`:**
+```json
+[
+  {
+    "id": "ach-01",
+    "title": "Primeira Quest Concluída",
+    "description": "Você completou sua primeira missão!",
+    "unlockedAt": "2025-04-01T10:30:00.000Z"
+  }
+]
+```
+
+---
+
+### 📊 Ranking
+
+| Método | Rota | Descrição |
+|---|---|---|
+| `GET` | `/game-system/ranking` | Ranking de usuários por XP |
+
+**Resposta `200 OK`:**
+```json
+[
+  { "position": 1, "name": "Alex", "xp": 350, "level": 4 },
+  { "position": 2, "name": "Maria", "xp": 200, "level": 3 }
+]
+```
+
+---
+
+## 🔄 Fluxo de Gamificação
+
+```
+[Criar Usuário] → [Criar Quest] → [Concluir Quest]
+                                         │
+                               ┌─────────▼─────────┐
+                               │  Service calcula   │
+                               │  XP + nível        │
+                               └─────────┬─────────┘
+                                         │
+                               ┌─────────▼─────────┐
+                               │ Verifica e desbloqueia│
+                               │    Achievements    │
+                               └─────────┬─────────┘
+                                         │
+                               ┌─────────▼─────────┐
+                               │  Ranking atualizado│
+                               └───────────────────┘
+```
+
+---
+
+## 🎯 O que foi praticado
+
+- Arquitetura em camadas com separação clara de responsabilidades
+- Tipagem estática com TypeScript em toda a aplicação
+- Persistência de dados sem banco externo usando `fs/promises`
+- Encapsulamento de regras de negócio na camada de serviços
+- Testes manuais e exploratórios de endpoints com Postman
+- Validação de fluxos de erro (usuário inexistente, quest já concluída, etc.)
+- Lógica de gamificação: cálculo de XP, nível e desbloqueio de achievements
 
 ---
 
 ## 📄 Licença
 
 Este projeto está sob a licença **MIT**.
+
+🔗 **Repositório:** [github.com/samu-benjamim/nodejs-API-Fantasia-Planner](https://github.com/samu-benjamim/nodejs-API-Fantasia-Planner)
